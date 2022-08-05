@@ -127,8 +127,12 @@ MiniCar.src = "./carGameImage/miniCar.png";
 // 運転者①の取得
 let Driver1 = new Image();
 Driver1.src = "./carGameImage/takanorisan.png";
-
-
+// 運転者②の取得
+let Driver2 = new Image();
+Driver2.src = "./carGameImage/akihikosan.png";
+// 運転者③の取得
+let Driver3 = new Image();
+Driver3.src = "./carGameImage/kawachisan.png";
 
 // 数字アイコンを読込み
 const numbers = {};
@@ -173,6 +177,11 @@ let carY = 480;
 // 爆発エフェクト位置の初期化
 let bombX = 0;
 let bombY = 0;
+
+// 
+let Driver = [Driver1, Driver2, Driver3][Math.floor(Math.random()*3)];
+
+
 
 // 障害物の数と位置を格納するオブジェクトを作成
 const enemies = { enem1 : [310 + Math.floor(Math.random() * 470) , Math.floor(Math.random() * 42) - 100, enemy1, 50 ,50],
@@ -350,8 +359,8 @@ function update() {
   ctx.drawImage(carImage, carX, carY, carImage.naturalWidth/5, carImage.naturalHeight/5);
 
   // 運転者を表示
-  ctx.drawImage(Driver1, 1020, 540, Driver1.naturalWidth, Driver1.naturalHeight);
-
+  ctx.drawImage(Driver, 1020, 540, Driver1.naturalWidth, Driver1.naturalHeight);
+  
   // 爆発エフェクトを表示
   if (count < hitCount + 30){
     ctx.drawImage(bomb, bombX - 60 , bombY -30, bomb.naturalWidth/2, bomb.naturalHeight/2);   
@@ -456,7 +465,7 @@ function start(){
   }
 
   // スペースが押されたらゲーム開始
-  if (inputKeyBuffer[32]){
+  if ((inputKeyBuffer[32] || inputKeyBuffer[13]) && (clickCount +15 < count)){
     // 音楽を停止
     music6.pause();  
     // カウントをゼロリセット
@@ -466,7 +475,7 @@ function start(){
     process = chooseLevel;
   }
   // "z"が押されたら説明画面へ
-  if (inputKeyBuffer[90]){
+  if ((inputKeyBuffer[90]) && (clickCount +15 < count)){
     // 音楽を停止
     music6.pause();  
     // 再生位置を最初に戻す
@@ -534,7 +543,7 @@ function discription(){
     }
   }
 
-  if ((inputKeyBuffer[32] || inputKeyBuffer[37] || inputKeyBuffer[38] || inputKeyBuffer[39] || inputKeyBuffer[40]||inputKeyBuffer[13]) && (clickCount + 10 < count) ){
+  if ((inputKeyBuffer[37] || inputKeyBuffer[38] || inputKeyBuffer[39] || inputKeyBuffer[40]||inputKeyBuffer[32]) && (clickCount + 10 < count) ){
     count = 0;
     clickCount = 0;
     picture = 0;
@@ -542,7 +551,7 @@ function discription(){
   }
 
   // "a"が押されたら説明画面へ
-  if ((((checkRange(1000, 1100, clickX)) && (checkRange(560, 615, clickY))) || (inputKeyBuffer[65]))
+  if ((((checkRange(1000, 1100, clickX)) && (checkRange(560, 615, clickY))) || (inputKeyBuffer[65])|| inputKeyBuffer[13])
        && (clickCount + 15 < count)){
     clickCount = count;
     // 音楽を停止
@@ -804,6 +813,8 @@ function URLlink(){
   // スペースが押されたらページをリンク
   if (inputKeyBuffer[32]) {
     window.location.href = 'https://kazuma-kato.github.io/KK_quiz/';
+  }else if(inputKeyBuffer[90]){
+    window.location.href = './index.html';
   }
   window.requestAnimationFrame(process);
 }
