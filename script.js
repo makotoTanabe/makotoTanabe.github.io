@@ -812,7 +812,7 @@ function End2(){
 function URLlink(){
   // スペースが押されたらページをリンク
   if (inputKeyBuffer[32]) {
-    window.location.href = 'https://kazuma-kato.github.io/KK_quiz/';
+    window.location.href = './report.html';
   }else if(inputKeyBuffer[90]){
     window.location.href = './index.html';
   }
