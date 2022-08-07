@@ -127,12 +127,21 @@ MiniCar.src = "./carGameImage/miniCar.png";
 // 運転者①の取得
 let Driver1 = new Image();
 Driver1.src = "./carGameImage/takanorisan.png";
+// 運転者①の取得
+let Driver11 = new Image();
+Driver11.src = "./carGameImage/takanorisan2.png";
 // 運転者②の取得
 let Driver2 = new Image();
 Driver2.src = "./carGameImage/akihikosan.png";
+// 運転者②の取得
+let Driver21 = new Image();
+Driver21.src = "./carGameImage/akihikosan2.png";
 // 運転者③の取得
 let Driver3 = new Image();
 Driver3.src = "./carGameImage/kawachisan.png";
+// メッセージの取得
+let messe = new Image();
+messe.src = "./carGameImage/messeage.png";
 
 // 数字アイコンを読込み
 const numbers = {};
@@ -179,7 +188,7 @@ let bombX = 0;
 let bombY = 0;
 
 // 
-let Driver = [Driver1, Driver2, Driver3][Math.floor(Math.random()*3)];
+let Driver = [[Driver1,Driver11], [Driver2,Driver21]][Math.floor(Math.random()*2)];
 
 
 
@@ -291,9 +300,8 @@ function update() {
     }
       
     // もし、障害物にぶつかったらHPをマイナス。ただし、一度ぶつかると次の1秒間は無敵状態にする。
-    if ((isAreaOverlap(carX, carY, carImage.naturalWidth/5, carImage.naturalHeight/5, enemies[enem][0], enemies[enem][1], enemies[enem][3], enemies[enem][4]))
-        && (hitCount + 60 < count)){
-          if (enemies[enem][2] !== enemy6){
+    if ((isAreaOverlap(carX, carY, carImage.naturalWidth/5, carImage.naturalHeight/5, enemies[enem][0], enemies[enem][1], enemies[enem][3], enemies[enem][4]))){
+          if ((enemies[enem][2] !== enemy6) && (enemies[enem][2] !== enemy7) && (hitCount + 60 < count)){
             HP -= 1;
             itemCount -=1;
             hitCount = count;
@@ -305,11 +313,26 @@ function update() {
             // 位置を初期化
             enemies[enem][0] = 310 + Math.floor(Math.random() * 470);
             enemies[enem][1] = Math.floor(Math.random() * 42) - 200;
-          }else if((healCount + 30 < count)){
+          }else if((enemies[enem][2] === enemy6) && (healCount + 20 < count)){
             if (HP < 5) {
               HP += 1;
             }
             itemCount += 5;
+            healCount = count;
+            // エフェクトを表示するための位置座標を取得
+            bombX = carX;
+            bombY = carY;
+            // 音楽を再生
+            music8.play(); 
+            // 障害物を初期化
+            enemies[enem][0] = 310 + Math.floor(Math.random() * 470);
+            enemies[enem][1] = Math.floor(Math.random() * 42) - 200;
+            enemies[enem][2] = enemy1;
+          }else if((enemies[enem][2] === enemy7) && (healCount + 20 < count)){
+            if (HP < 5) {
+              HP += 2;
+            }
+            itemCount += 10;
             healCount = count;
             // エフェクトを表示するための位置座標を取得
             bombX = carX;
@@ -359,7 +382,11 @@ function update() {
   ctx.drawImage(carImage, carX, carY, carImage.naturalWidth/5, carImage.naturalHeight/5);
 
   // 運転者を表示
-  ctx.drawImage(Driver, 1020, 540, Driver1.naturalWidth, Driver1.naturalHeight);
+  if (hitCount + 30 < count){
+    ctx.drawImage(Driver[0], 1020, 540, Driver1.naturalWidth, Driver1.naturalHeight);
+  }else{
+    ctx.drawImage(Driver[1], 1020, 540, Driver2.naturalWidth, Driver2 .naturalHeight);
+  }
   
   // 爆発エフェクトを表示
   if (count < hitCount + 30){
@@ -454,6 +481,7 @@ function start(){
   }
   //　configを表示
   ctx.drawImage(Menu2, 700, 441, Menu2.naturalWidth/5.5, Menu2.naturalHeight/5.5);
+
 
   // 点滅用のカウントを実施
   if (count % 80 === 0){
@@ -811,7 +839,11 @@ function End2(){
 // 画面遷移用関数
 function URLlink(){
   // スペースが押されたらページをリンク
-  if (inputKeyBuffer[32]) {
+
+  if (HP !== 0){
+    ctx.drawImage(messe, 140, 450, messe.naturalWidth/3, messe.naturalHeight/3);
+  }
+  if ((inputKeyBuffer[32])||(inputKeyBuffer[13])) {
     window.location.href = './report.html';
   }else if(inputKeyBuffer[90]){
     window.location.href = './index.html';
