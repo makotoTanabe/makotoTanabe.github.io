@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8" />
+  <title>DIG Report</title>
+  <link rel="stylesheet" href="ReporCSS.css">
+</head>
+
+<body>
+  <div class="backdroud">
+    <div class="container">
+      <div class="item1">
+        <h1 class="ReportTitle">
+        <span>
+          性格診断結果レポート
+        </span>
+        </h1>
+      </div>
+      <div class="item2">
+      </div>
+      <div class="item3">
+        <h3>ペルソナ像</h3>
+        <img id="images" src="./reportImage/max1.png" width="370" alt="ペルソナ像" style="display: block; margin: auto;">
+      </div>
+      <div class="item4">
+        <!-- <h2 class="c-title">判断詳細</h2> -->
+        <div class="container2">
+          <span class="grid1">・知識力</span>
+          <span class="grid2">・分析力</span>
+          <span class="grid3">・表現力</span>
+        </div>
+        <div class="pie-chart-wrap">
+          <div class="box blue">
+            <div class="percent">
+              <svg>
+                <circle class="base" cx="75" cy="75" r="70"></circle>
+                <circle class="line" cx="75" cy="75" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h3 class="title">0<span>%</span></h3>
+              </div>
+            </div>
+          </div>
+          <div class="box red">
+            <div class="percent">
+              <svg>
+                <circle class="base" cx="75" cy="75" r="70"></circle>
+                <circle class="line" cx="75" cy="75" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h3 class="title">0<span>%</span></h3>
+              </div>
+            </div>
+          </div>
+          <div class="box green">
+            <div class="percent">
+              <svg>
+                <circle class="base" cx="75" cy="75" r="70"></circle>
+                <circle class="line" cx="75" cy="75" r="70"></circle>
+              </svg>
+              <div class="number">
+                <h3 class="title">0<span>%</span></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="item5">
+        <div id="Abstruct">
+        </div>
+        <p class="detail1"></p>
+        <p class="detail2"></p>
+
+      </div>
+      <!-- <div class="item6">item6</div> -->
+    </div>
+  </div>
+
+
+  <div id="pie-chart" class="content">
+
+
+</body>
+<script src="./makeReport.js"></script>
+
+
+
+</html>
