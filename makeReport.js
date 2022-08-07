@@ -1,4 +1,5 @@
 // キーボードの入力イベントをトリガーに配列のフラグ値を更新させる
+let inputKeyBuffer = new Array();
 window.addEventListener("keydown", handleKeydown);
 window.addEventListener("keyup", handleKeyup);
 function handleKeydown(enter) {
@@ -85,9 +86,10 @@ makeChart(440-4.4*skill[0] ,440-4.4*skill[1] ,440-4.4*skill[2]);
 function URLlink(){
     // スペースが押されたらページをリンク
     if (inputKeyBuffer[32]) {
-      window.location.href = './report.html';
-    }else if(inputKeyBuffer[90]){
       window.location.href = './index.html';
+    }else if(inputKeyBuffer[90]){
+      window.location.href = './report.html';
     }
-    window.requestAnimationFrame(process);
+    window.requestAnimationFrame(URLlink);
 }
+window.requestAnimationFrame(URLlink);
