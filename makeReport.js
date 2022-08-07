@@ -9,6 +9,14 @@ function handleKeydown(enter) {
 function handleKeyup(enter) {
   inputKeyBuffer[enter.keyCode] = false;
 }
+
+// 音楽の設定
+let music1 = new Audio('./reportMusic/beckMusic.mp3');
+// 音量の調整
+music1.volume = 0.08;
+// 音楽の再生
+music1.play(); 
+
 // Chart更新関数
 function makeChart(num1,num2,num3){
     // Graph1を更新
