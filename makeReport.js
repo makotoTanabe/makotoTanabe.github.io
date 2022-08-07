@@ -13,7 +13,7 @@ function handleKeyup(enter) {
 // 音楽の設定
 let music1 = new Audio('./reportMusic/beckMusic.mp3');
 // 音量の調整
-music1.volume = 0.08;
+music1.volume = 0.05;
 // 音楽の再生
 music1.play(); 
 

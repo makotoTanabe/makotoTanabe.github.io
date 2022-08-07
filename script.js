@@ -212,14 +212,14 @@ let music7 = new Audio('./carGameMusic/clear2.mp3');
 let music8 = new Audio('./carGameMusic/heal.mp3');
 
 // 音量の調整
-music1.volume = 0.1;
-music2.volume = 0.1;
-music3.volume = 0.1;
-music4.volume = 0.3;
-music5.volume = 0.1;
-music6.volume = 0.1;
-music7.volume = 0.1;
-music8.volume = 0.1;
+music1.volume = 0.05;
+music2.volume = 0.05;
+music3.volume = 0.05;
+music4.volume = 0.2;
+music5.volume = 0.05;
+music6.volume = 0.05;
+music7.volume = 0.05;
+music8.volume = 0.05;
 
 // 繰り返し再生の設定
 music1.loop = true;
