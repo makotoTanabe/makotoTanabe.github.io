@@ -594,15 +594,15 @@ function discription(){
   window.requestAnimationFrame(process);
 }
 
-const prof = [[enemy5, 'しつちょ～' ,760 ,'猪木ファン、我らの室長' ,'強い（確信）'],
-              [enemy1, 'Max!' ,820 ,'タンクトップ愛好家' ,'鋼の肉体を持つ'],
-              [extra1, 'アルファード' ,740 ,'西村さんの愛車・速い' ,'積載物はタンクトップ'],
-              [enemy3, 'カラーコーン' ,740 ,'何のへんてつもない' ,'普通のカラーコーン'],
-              [enemy6, 'タンクトップ' ,740 ,'絶滅の危機に瀕している' ,'着るとHPが回復'],
-              [enemy4, '通行止めのやつ' ,720 ,'黄色と黒のストライプ' ,'ぶつかると痛い'],              
-              [enemy2, 'ディグダ' ,780 ,'野生のディグダ' ,'クルマには勝てない'],
-              [extra2, 'ヒミツ' ,800 ,'隠しキャラ' ,'出会えるとラッキー！'],
-              [enemy7, 'くにしぃ☆' ,760 ,'隠しキャラ' ,'ぱわふるガール！']
+const prof = [[enemy5, 'しつちょ～' ,760 ,'猪木ファン、我らの室長' ,'強い（確信）',"HP -1"],
+              [enemy1, 'Max!' ,820 ,'タンクトップ愛好家' ,'鋼の肉体を持つ',"HP -1"],
+              [extra1, 'アルファード' ,740 ,'西村さんの愛車・速い' ,'積載物はタンクトップ',"最大HP：6"],
+              [enemy3, 'カラーコーン' ,740 ,'何のへんてつもない' ,'普通のカラーコーン',"HP -1"],
+              [enemy6, 'タンクトップ' ,740 ,'絶滅の危機に瀕している' ,'着るとHPが回復',"HP +1"],
+              [enemy4, '通行止めのやつ' ,720 ,'黄色と黒のストライプ' ,'ぶつかると痛い',"HP -1"],              
+              [enemy2, 'ディグダ' ,780 ,'野生のディグダ' ,'クルマには勝てない',"HP -1"],
+              [extra2, 'ヒミツ' ,800 ,'隠しキャラ' ,'出会えるとラッキー！',"???"],
+              [enemy7, 'くにしぃ☆' ,760 ,'隠しキャラ' ,'ぱわふるガール！',"HP +2"]
             ];
 
 function discriptionDetail(){
@@ -626,12 +626,15 @@ function discriptionDetail(){
     ctx.fillText(prof[8][1], prof[8][2], 600);
     ctx.fillText(prof[8][3], 70, 200);
     ctx.fillText(prof[8][4], 70, 270);
+    ctx.fillText(prof[8][5], 70, 340);
   }else{
     ctx.drawImage(prof[picture][0], 800, 250, 190, 190);
     ctx.font = '40px fantasy';
     ctx.fillText(prof[picture][1], prof[picture][2], 600);
     ctx.fillText(prof[picture][3], 70, 200);
     ctx.fillText(prof[picture][4], 70, 270);
+    ctx.fillText(prof[picture][5], 70, 340);
+
   }
   
   // 戻るボタンを表示
